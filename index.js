@@ -65,22 +65,19 @@ client.connect((err) => {
     const description = req.body.description;
     console.log(name, description, file);
     const filePath = `${__dirname}/service_img/${file.name}`;
-   
 
-      const newImg = file.data;
-      const encImg = newImg.toString("base64");
-      var image = {
-        contentType: file.mimetype,
-        size: file.size,
-        img: Buffer.from(encImg, "base64"),
-      };
-      servicesCollection
-        .insertOne({ name, description, image })
-        .then((result) => {
-         
-            res.send(result.insertedCount > 0);
-          });
-        });
+    const newImg = file.data;
+    const encImg = newImg.toString("base64");
+    var image = {
+      contentType: file.mimetype,
+      size: file.size,
+      img: Buffer.from(encImg, "base64"),
+    };
+    servicesCollection
+      .insertOne({ name, description, image })
+      .then((result) => {
+        res.send(result.insertedCount > 0);
+      });
   });
 
   // get services from mongodb
