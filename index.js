@@ -8,7 +8,7 @@ const app = express();
 
 const port = 9900;
 
-app.use(bodyParser());
+app.use(express.json());
 app.use(cors());
 app.use(express.static("service_img"));
 app.use(fileUpload());
