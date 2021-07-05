@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 // const bodyParser = require("body-parser");
-const fileUpload = require("express-fileUpload");
+const fileUpload = require("express-fileupload");
 const fs = require("fs-extra");
 const cors = require("cors");
 const app = express();
