@@ -65,31 +65,22 @@ client.connect((err) => {
     const description = req.body.description;
     console.log(name, description, file);
     const filePath = `${__dirname}/service_img/${file.name}`;
-    file.mv(filePath, (error) => {
-      if (error) {
-        console.log(error);
-        res.status(500).send({ msg: "failed to upload the image" });
-      }
+   
 
-      const newImg = fs.readFileSync(filePath);
+      const newImg = file.data;
       const encImg = newImg.toString("base64");
       var image = {
-        contentType: "file.mimetype",
-        size: "file.size",
-        img: Buffer(encImg, "base64"),
+        contentType: file.mimetype,
+        size: file.size,
+        img: Buffer.from(encImg, "base64"),
       };
       servicesCollection
         .insertOne({ name, description, image })
         .then((result) => {
-          fs.remove(filePath, (err) => {
-            if (err) {
-              console.log(err);
-              res.status(500).send({ msg: "failed to upload the image" });
-            }
+         
             res.send(result.insertedCount > 0);
           });
         });
-    });
   });
 
   // get services from mongodb
