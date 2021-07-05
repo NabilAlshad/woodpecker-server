@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const fileUpload = require("express-fileUpload");
 const fs = require("fs-extra");
 const cors = require("cors");
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.static("service_img"));
 app.use(fileUpload());
 
-console.log(process.env.DB_NAME);
+// console.log(process.env.DB_NAME);
 
 const MongoClient = require("mongodb").MongoClient;
 const { ObjectID } = require("mongodb").ObjectID;
