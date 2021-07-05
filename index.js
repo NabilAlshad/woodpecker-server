@@ -1,7 +1,8 @@
 const express = require("express");
 require("dotenv").config();
 // const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
+// const fileupload = require("express-fileupload");
+const fileupload = require("express-fileupload");
 const fs = require("fs-extra");
 const cors = require("cors");
 const app = express();
@@ -11,7 +12,7 @@ const port = 5000;
 app.use(express.json());
 app.use(cors());
 app.use(express.static("service_img"));
-app.use(fileUpload());
+app.use(fileupload());
 
 // console.log(process.env.DB_NAME);
 
